@@ -238,7 +238,7 @@ This selected comparison covers OrbitDroid and MuMuPlayer for Mac.
 
 | Emulator | Free access | Paid access / price | Useful context |
 |---|---|---|---|
-| **OrbitDroid 0.4** | **₹0 / $0 Free essentials** | Pro: pricing by email | Apple silicon + Intel; Android 11 Free / 14 Pro; macOS 13+ |
+| **OrbitDroid 0.4** | **₹0 / $0 Free essentials** | Open Source Free | Apple silicon + Intel; Android 11 Free / 14 Pro; macOS 13+ |
 | [MuMuPlayer for Mac](https://www.mumuplayer.com/help/mac/free-trial-and-membership.html) | Eligible **7-day trial** | Paid membership afterward; current amount shown at checkout | Trial is limited to eligible Macs; plans/regions vary |
 
 *Checked 7 November 2026 using official vendor sources. Prices can change and may
