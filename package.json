@@ -1,0 +1,9 @@
+{
+  "name": "orbitdroid-public-readme",
+  "version": "0.4.0",
+  "private": true,
+  "description": "OrbitDroid GitHub README, public media and guides only",
+  "license": "SEE LICENSE IN LICENSE",
+  "scripts": {"check": "node tools/check-public.cjs"},
+  "engines": {"node": ">=18"}
+}

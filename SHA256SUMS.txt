@@ -1,0 +1,2 @@
+a8739f79fae4ae66b7362ebf601a882012a84ba80bc9560f3f027db525e68c90  OrbitDroid_Mac_Apple_Silicon.zip
+5c63664888331e1bedb33a7d55a008f50ae1377d3549cae11d9eda92951dd155  OrbitDroid_Mac_Intel.zip
