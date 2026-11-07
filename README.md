@@ -207,29 +207,6 @@ damage, stop and request help instead of forcing it open.
 
 [Full privacy and safety notes](docs/PRIVACY_AND_SAFETY.md) · [Apple's explanation](https://support.apple.com/en-us/102445) · [Original annotated PDF](assets/guides/open-anyway.pdf)
 
-## Free and Pro
-
-**The Free tier costs ₹0 / $0 and has no trial timer for its included features.**
-Pro pricing and duration are agreed with Rahul by email before purchase.
-
-| Feature | Free essentials — ₹0 / $0 | Optional Pro |
-|---|:---:|:---:|
-| One Android 11 device | ✓ | ✓ |
-| Single APK installs, Google Play and App Center | ✓ | ✓ |
-| Mac Fast, graphics settings and Focus mode | ✓ | ✓ |
-| Android 14 | — | ✓ |
-| Additional devices — up to 8 total | — | ✓ |
-| Batch and split APK installs | — | ✓ |
-| Dashboard file sharing and screenshot export | — | ✓ |
-
-Keys are checked on the Mac they were issued for. Payment confirmation and key
-issuance are manual. Private source-code access is a **separate agreement**.
-Existing device data is retained on upgrade or license expiry/removal; locked
-features need an appropriate key. Different Android versions do not migrate data
-automatically.
-
-[Ask Rahul about Pro](mailto:rohan1ttg2001@gmail.com?subject=OrbitDroid%20Pro%20pricing%20request)
-
 <a name="comparison"></a>
 
 ## Compare with MuMuPlayer for Mac
