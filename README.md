@@ -109,7 +109,7 @@ unrelated script or disable system security globally.
 
 **Screenshot note:** these images were supplied from earlier builds. The 0.3
 Community dashboard's open-source wording is historical. The current 0.4
-[Free/Pro features](#free-and-pro) and [license](LICENSE) are described here.
+[Free/Pro features](#free) and [license](LICENSE) are described here.
 
 ### Android running on the Mac
 
