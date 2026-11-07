@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OrbitDroid — a free, open-source Android workspace for Mac. Downloads, installation instructions, and support.">
+  <meta name="theme-color" content="#04130f">
+  <title>OrbitDroid — Your Android. Your Mac.</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --background: #04130f;
+      --surface: #0a211b;
+      --border: #244c3c;
+      --mint: #8affce;
+      --text: #effff7;
+      --muted: #acc9bb;
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: var(--mint); }
+
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid white;
+      outline-offset: 5px;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button { font: inherit; }
+
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--border);
+      background: #04130ff2;
+      backdrop-filter: blur(18px);
+    }
+
+    .navigation {
+      min-height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      text-decoration: none;
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .brand svg { width: 43px; height: 43px; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    nav a:hover { color: white; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 95px 0 65px;
+      background:
+        radial-gradient(ellipse at 95% 0%, #08714366, transparent 48%),
+        radial-gradient(ellipse at 20% 55%, #0a6a4533, transparent 55%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 950px;
+      height: 340px;
+      right: -310px;
+      top: 40px;
+      border: 1px solid #52ffad38;
+      border-radius: 50%;
+      transform: rotate(-35deg);
+      box-shadow:
+        0 0 80px #42ff991f,
+        inset 0 0 100px #42ff9914;
+      pointer-events: none;
+    }
+
+    .hero .container { position: relative; }
+
+    .eyebrow {
+      color: var(--mint);
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(52px, 8vw, 100px);
+      line-height: 1.02;
+      letter-spacing: -5px;
+      margin: 25px 0;
+    }
+
+    h1 span { color: var(--mint); }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin: 14px 0 22px;
+    }
+
+    h3 {
+      font-size: 23px;
+      line-height: 1.3;
+      margin: 0 0 14px;
+    }
+
+    p { color: var(--muted); }
+
+    .lead {
+      max-width: 690px;
+      font-size: 21px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 30px 0;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 50px;
+      padding: 12px 23px;
+      border: 1px solid var(--mint);
+      border-radius: 11px;
+      background: var(--mint);
+      color: #052418;
+      font-size: 15px;
+      font-weight: 750;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover {
+      background: #b2ffde;
+      transform: translateY(-2px);
+    }
+
+    .button.secondary {
+      background: #0b251bcc;
+      border-color: #426a55;
+      color: var(--text);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      border: 1px solid #3b634d;
+      background: #08201699;
+      padding: 5px 12px;
+      border-radius: 99px;
+      color: #c6e8d6;
+      font-size: 12px;
+    }
+
+    .app-preview {
+      margin-top: 55px;
+      border: 1px solid #4d8868;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 30px 100px #0006;
+      background: #071c15;
+    }
+
+    .window-bar {
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      background: #102c20;
+      color: #a2c6b0;
+      font-size: 12px;
+    }
+
+    .dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .dots i {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ff665c;
+    }
+
+    .dots i:nth-child(2) { background: #ffce48; }
+    .dots i:nth-child(3) { background: #40d985; }
+
+    .preview-art {
+      padding: 45px 25px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 30px;
+      align-items: center;
+      background:
+        radial-gradient(ellipse at right, #11553b, transparent 65%),
+        #081c15;
+    }
+
+    .preview-copy {
+      padding-left: 20px;
+    }
+
+    .preview-copy h2 { font-size: clamp(28px, 4vw, 44px); }
+
+    .preview-copy p { max-width: 420px; }
+
+    .phone {
+      width: 180px;
+      aspect-ratio: 9 / 17;
+      margin: auto;
+      border: 5px solid #8affce;
+      border-radius: 32px;
+      background:
+        radial-gradient(ellipse at top left, #6be1a2, transparent 65%),
+        linear-gradient(150deg, #0b553d, #062e22);
+      transform: rotate(-10deg);
+      box-shadow: 0 0 50px #5dffa531;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .phone::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #082a1b;
+      position: absolute;
+      top: 12px;
+      left: calc(50% - 3px);
+    }
+
+    .phone strong {
+      font-size: 25px;
+      line-height: 1.25;
+      padding: 15px;
+    }
+
+    .phone small {
+      display: block;
+      margin-top: 15px;
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    section {
+      padding: 75px 0;
+      border-bottom: 1px solid #19392a;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #102e21, #081c14);
+      min-width: 0;
+    }
+
+    .card.featured {
+      border-color: #68d99e;
+      box-shadow: 0 0 45px #4aff9610;
+    }
+
+    .number {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--mint);
+      margin-bottom: 25px;
+    }
+
+    .card .button {
+      width: 100%;
+      margin-top: 18px;
+    }
+
+    .filename {
+      display: block;
+      padding: 15px;
+      background: #04150d;
+      border: 1px solid #244b36;
+      border-radius: 10px;
+      color: var(--mint);
+      font-size: 12px;
+      line-height: 1.8;
+      overflow-wrap: anywhere;
+    }
+
+    .notice {
+      padding: 18px 22px;
+      border-left: 3px solid var(--mint);
+      background: #10291d;
+      color: #c5e4d2;
+      margin: 25px 0;
+    }
+
+    .small { font-size: 13px; }
+
+    .steps {
+      counter-reset: install;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .step {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: #0a2118;
+    }
+
+    .step::before {
+      counter-increment: install;
+      content: "0" counter(install);
+      display: block;
+      color: var(--mint);
+      font-size: 13px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .step p { margin-bottom: 0; }
+
+    code {
+      color: #b0ffd5;
+      overflow-wrap: anywhere;
+    }
+
+    .file-guide {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+      font-size: 14px;
+    }
+
+    .file-guide th,
+    .file-guide td {
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      padding: 17px 12px;
+      vertical-align: top;
+      overflow-wrap: anywhere;
+    }
+
+    .file-guide th { color: var(--mint); }
+
+    .table-scroll { overflow-x: auto; }
+
+    .checklist {
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+    }
+
+    .checklist li {
+      padding: 10px 0;
+      border-bottom: 1px solid #214331;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      color: var(--mint);
+      margin-right: 12px;
+    }
+
+    details {
+      border-bottom: 1px solid var(--border);
+      padding: 22px 0;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 650;
+    }
+
+    details p { max-width: 850px; }
+
+    .support {
+      padding: 45px;
+      border: 1px solid #3f825c;
+      border-radius: 22px;
+      background:
+        radial-gradient(ellipse at top right, #175e39, transparent 70%),
+        #0a2318;
+    }
+
+    .support p { max-width: 750px; }
+
+    footer { padding: 38px 0; }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .container { width: min(100% - 30px, 1160px); }
+      .hero { padding-top: 55px; }
+      h1 { letter-spacing: -3px; }
+      nav { gap: 15px; }
+      nav a:nth-child(2),
+      nav a:nth-child(3) { display: none; }
+      .grid,
+      .grid.two,
+      .steps,
+      .preview-art { grid-template-columns: 1fr; }
+      .preview-copy { padding-left: 0; }
+      .phone { width: 145px; }
+      .preview-art { padding: 30px; }
+      .card, .support { padding: 25px; }
+      section { padding: 50px 0; }
+      .window-bar { font-size: 10px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button { transition: none; }
+      .button:hover { transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <!--
+    DOWNLOAD SETUP
+    Upload these exact files to your GitHub Release tagged v0.4.0:
+      OrbitDroid_Mac_Apple_Silicon.zip
+      OrbitDroid_Mac_Intel.zip
+      SHA256SUMS.txt
+
+    The download buttons below point to those Release assets.
+    This HTML file does not contain the Mac app binaries.
+
+    If your existing app still has license checks, changing this website
+    does not remove them. Update and rebuild the app before distributing
+    it as an unrestricted free edition.
+
+    For open-source distribution, publish the app source and an appropriate
+    license. Keep credentials, signing keys and personal data private.
+  -->
+
+  <header>
+    <div class="container navigation">
+      <a class="brand" href="#home" aria-label="OrbitDroid home">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect x="1" y="1" width="62" height="62" rx="17"
+                fill="#0c4934" stroke="#55dca0"/>
+          <circle cx="32" cy="31" r="17" fill="#91ffd0"/>
+          <ellipse cx="32" cy="34" rx="27" ry="9"
+                   fill="none" stroke="#39d9a0" stroke-width="5"
+                   transform="rotate(-30 32 34)"/>
+          <circle cx="51" cy="15" r="4" fill="#b9ffe0"/>
+        </svg>
+        OrbitDroid
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="#downloads">Download</a>
+        <a href="#install">Install</a>
+        <a href="#opensource">Open source</a>
+        <a href="#help">Help</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero" id="home">
+      <div class="container">
+        <div class="eyebrow">Android workspace for Mac</div>
+
+        <h1>Your Android.<br><span>Your Mac.</span></h1>
+
+        <p class="lead">
+          One place for your Android apps and virtual devices.
+          Free to use. Open-source app code. No subscription.
+        </p>
+
+        <div class="actions">
+          <a class="button" href="#downloads">↓ Download for Mac</a>
+          <a class="button secondary"
+             href="https://github.com/rohanttg2001/OrbitDroid">
+            Explore on GitHub ↗
+          </a>
+        </div>
+
+        <div class="tags">
+          <span class="tag">Apple silicon + Intel</span>
+          <span class="tag">macOS 13+</span>
+          <span class="tag">Free to use</span>
+          <span class="tag">Open-source app code</span>
+        </div>
+
+        <div class="app-preview">
+          <div class="window-bar">
+            <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span>OrbitDroid · Emerald workspace</span>
+            <span>Made for your Mac</span>
+          </div>
+
+          <div class="preview-art">
+            <div class="preview-copy">
+              <div class="eyebrow">Your Android workspace</div>
+              <h2>A familiar home.<br>A fresh perspective.</h2>
+              <p>
+                Launch your virtual device, install compatible APKs,
+                and keep everyday controls within reach.
+              </p>
+              <div class="tags">
+                <span class="tag">Device controls</span>
+                <span class="tag">APK installation</span>
+                <span class="tag">Performance presets</span>
+              </div>
+            </div>
+
+            <div class="phone" aria-label="Illustration of an Android device">
+              <strong>
+                Ready when<br>you are.
+                <small>YOUR ANDROID, IN ORBIT</small>
+              </strong>
+            </div>
+          </div>
+        </div>
+
+        <p class="caption">
+          Interface illustration. Android runs in its own emulator window.
+        </p>
+      </div>
+    </div>
+
+    <section id="features">
+      <div class="container">
+        <div class="eyebrow">Built around everyday use</div>
+        <h2>Less clicking. More Android.</h2>
+
+        <div class="grid">
+          <article class="card">
+            <div class="number">01 / YOUR WORKSPACE</div>
+            <h3>One place to begin</h3>
+            <p>
+              Start and stop Android from a dedicated Mac dashboard.
+              Return to your device whenever you need your apps.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="number">02 / YOUR APPS</div>
+            <h3>Bring a compatible APK</h3>
+            <p>
+              Use the APK installer to add Android apps from sources
+              you trust. Compatibility depends on the app and system image.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="number">03 / YOUR SETTINGS</div>
+            <h3>Find your balance</h3>
+            <p>
+              Choose a suitable display and memory preset.
+              Use Focus mode while you work inside Android.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="downloads">
+      <div class="container">
+        <div class="eyebrow">Download the Mac app</div>
+        <h2>Choose the ZIP for your Mac.</h2>
+
+        <p>
+          Open <strong>Apple menu → About This Mac</strong>.
+          “Chip: Apple M…” means Apple silicon.
+          “Processor: Intel…” means Intel.
+        </p>
+
+        <div class="grid two">
+          <article class="card featured">
+            <div class="number">APPLE M-SERIES CHIPS</div>
+            <h3>Apple silicon</h3>
+            <p>Choose this for Macs with an Apple M-series chip.</p>
+
+            <code class="filename">
+              OrbitDroid_Mac_Apple_Silicon.zip<br>
+              Extract → OrbitDroid.app
+            </code>
+
+            <a class="button"
+               href="https://github.com/rohanttg2001/OrbitDroid/releases/download/v0.4.0/OrbitDroid_Mac_Apple_Silicon.zip">
+              ↓ Download Apple silicon app
+            </a>
+
+            <p class="small">ARM64 · macOS 13 or later</p>
+          </article>
+
+          <article class="card">
+            <div class="number">INTEL PROCESSORS</div>
+            <h3>Intel Mac</h3>
+            <p>Choose this for supported Macs with a 64-bit Intel processor.</p>
+
+            <code class="filename">
+              OrbitDroid_Mac_Intel.zip<br>
+              Extract → OrbitDroid.app
+            </code>
+
+            <a class="button"
+               href="https://github.com/rohanttg2001/OrbitDroid/releases/download/v0.4.0/OrbitDroid_Mac_Intel.zip">
+              ↓ Download Intel app
+            </a>
+
+            <p class="small">x86_64 · macOS 13 or later</p>
+          </article>
+        </div>
+
+        <div class="notice">
+          <strong>The app is OrbitDroid.app.</strong>
+          Download the matching Mac ZIP, extract it, and move
+          <strong>OrbitDroid.app</strong> to Applications.
+          GitHub’s automatic “Source code (zip)” download is a repository
+          archive, not the ready-to-run Mac app.
+        </div>
+
+        <p>
+          Start with <strong>8 GB RAM</strong>, approximately
+          <strong>20 GB free storage</strong>, and compatible hardware
+          virtualization. Internet is needed for initial Android downloads.
+          Compatibility across every Mac model has not been verified.
+        </p>
+
+        <p>
+          <a href="https://github.com/rohanttg2001/OrbitDroid/releases">
+            Browse release files ↗
+          </a>
+          &nbsp; · &nbsp;
+          <a href="https://github.com/rohanttg2001/OrbitDroid/releases/download/v0.4.0/SHA256SUMS.txt">
+            Download checksums
+          </a>
+        </p>
+
+        <h3>Already downloaded the complete bundle?</h3>
+
+        <div class="table-scroll">
+          <table class="file-guide">
+            <thead>
+              <tr>
+                <th>File or folder</th>
+                <th>What it contains</th>
+                <th>Install this?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>02_Release_Assets/OrbitDroid_Mac_Apple_Silicon.zip</code></td>
+                <td>The Apple silicon Mac app</td>
+                <td>Yes, for M-series Macs</td>
+              </tr>
+              <tr>
+                <td><code>02_Release_Assets/OrbitDroid_Mac_Intel.zip</code></td>
+                <td>The Intel Mac app</td>
+                <td>Yes, for Intel Macs</td>
+              </tr>
+              <tr>
+                <td><code>01_GitHub_Files/</code></td>
+                <td>Public repository files and documentation</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><code>docs/index.html</code></td>
+                <td>This download website</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><code>SHA256SUMS.txt</code></td>
+                <td>Checksums for verifying downloads</td>
+                <td>No</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="install">
+      <div class="container">
+        <div class="eyebrow">From download to first launch</div>
+        <h2>Your installation guide.</h2>
+
+        <div class="steps">
+          <article class="step">
+            <h3>Check your Mac chip</h3>
+            <p>
+              Open Apple menu → About This Mac.
+              Choose the matching Apple silicon or Intel download.
+            </p>
+          </article>
+
+          <article class="step">
+            <h3>Extract the app ZIP</h3>
+            <p>
+              Double-click the downloaded ZIP in Finder.
+              Locate <code>OrbitDroid.app</code> inside the extracted files.
+            </p>
+          </article>
+
+          <article class="step">
+            <h3>Move to Applications</h3>
+            <p>
+              Drag <code>OrbitDroid.app</code> into your Applications folder.
+              Open it from there.
+            </p>
+          </article>
+
+          <article class="step">
+            <h3>Review macOS prompts</h3>
+            <p>
+              This build is not Apple-notarized. After a blocked launch,
+              only if you trust the download, use System Settings →
+              Privacy &amp; Security → Open Anyway.
+              Keep macOS security protections enabled.
+            </p>
+          </article>
+
+          <article class="step">
+            <h3>Complete Android setup</h3>
+            <p>
+              Follow the app’s setup instructions, review the runtime terms,
+              and let the required Android downloads finish.
+              Select Start Android.
+            </p>
+          </article>
+
+          <article class="step">
+            <h3>Install your Android app</h3>
+            <p>
+              Choose Install an APK, select a compatible APK you trust,
+              and open the installed app inside the Android window.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="performance">
+      <div class="container">
+        <div class="eyebrow">A lighter starting point</div>
+        <h2>Give Android room to run.</h2>
+
+        <div class="grid">
+          <article class="card">
+            <div class="number">DISPLAY</div>
+            <h3>Start at a lower resolution</h3>
+            <p>
+              Try 960 × 540 when available.
+              Fewer pixels can reduce graphics work,
+              especially on memory-limited Macs.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="number">MEMORY</div>
+            <h3>Leave space for macOS</h3>
+            <p>
+              Start with a lighter memory preset on an 8 GB Mac.
+              Close heavy browser tabs and other virtual machines.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="number">WORKSPACE</div>
+            <h3>Use Focus mode</h3>
+            <p>
+              Reduce dashboard activity while Android is running.
+              Stop Android before changing presets, then restart it.
+            </p>
+          </article>
+        </div>
+
+        <p class="small">
+          Performance depends on your Mac, graphics support, Android image,
+          and workload. No fixed frame rate or lag-free operation is guaranteed.
+        </p>
+      </div>
+    </section>
+
+    <section id="opensource">
+      <div class="container">
+        <div class="eyebrow">Free to use · Open-source app code</div>
+        <h2>Explore it. Use it. Make it yours.</h2>
+
+        <div class="grid two">
+          <article class="card featured">
+            <h3>No subscription. No activation key.</h3>
+            <p>
+              OrbitDroid is offered as a free app.
+              Its features are not divided into paid access tiers.
+            </p>
+
+            <ul class="checklist">
+              <li>Free app downloads</li>
+              <li>No subscription required</li>
+              <li>No paid feature unlocks</li>
+              <li>No activation key required</li>
+            </ul>
+
+            <p class="small">
+              Available Android versions and tools depend on the installed
+              release, runtime image, and your Mac’s capabilities.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Read the code and license</h3>
+            <p>
+              Visit the GitHub repository for the app source,
+              documentation, issue reports, and contribution information.
+              Follow the repository’s license when reusing or distributing code.
+            </p>
+
+            <p>
+              Google’s Android Emulator, Android system images, Electron,
+              and other third-party components retain their own terms,
+              licenses, and notices.
+            </p>
+
+            <a class="button secondary"
+               href="https://github.com/rohanttg2001/OrbitDroid">
+              Open the repository ↗
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <div class="container">
+        <div class="eyebrow">Understand what you install</div>
+        <h2>Privacy and safety, explained.</h2>
+
+        <div class="grid two">
+          <article class="card">
+            <h3>Your Android session</h3>
+            <p>
+              OrbitDroid provides a dashboard around Google’s Android Emulator.
+              Emulator data and installed apps are stored on your Mac.
+              Android apps and Google services can make their own
+              network requests.
+            </p>
+
+            <p>
+              Install APKs from sources you trust.
+              Review permissions and the privacy policies of the apps
+              you install inside Android.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Know the build’s status</h3>
+            <p>
+              This Mac build is not Apple-notarized and has no independent
+              malware-free certification. Download from the official
+              repository and compare published checksums when available.
+            </p>
+
+            <p>
+              This page contains no analytics scripts, external fonts,
+              or account forms. GitHub handles hosting and download requests
+              under its own policies.
+            </p>
+          </article>
+        </div>
+
+        <div class="notice">
+          Open source allows inspection; it does not guarantee that software
+          is free of bugs or security issues. Keep your Mac updated and avoid
+          installing untrusted APKs.
+        </div>
+      </div>
+    </section>
+
+    <section id="help">
+      <div class="container">
+        <div class="eyebrow">Help when you need it</div>
+        <h2>Common questions.</h2>
+
+        <details>
+          <summary>Which ZIP should I download?</summary>
+          <p>
+            Choose <code>OrbitDroid_Mac_Apple_Silicon.zip</code> for an
+            M-series Mac or <code>OrbitDroid_Mac_Intel.zip</code> for an Intel Mac.
+            Extract it and move <code>OrbitDroid.app</code> to Applications.
+          </p>
+        </details>
+
+        <details>
+          <summary>The download button gives a 404 error.</summary>
+          <p>
+            The matching app ZIP has not been uploaded at the configured
+            release address, or its filename or tag is different.
+            Open
+            <a href="https://github.com/rohanttg2001/OrbitDroid/releases">
+              GitHub Releases
+            </a>
+            and check the available assets.
+            The website owner must make the button URL match the exact
+            release tag and asset filename.
+          </p>
+        </details>
+
+        <details>
+          <summary>Apple could not verify the app. What does that mean?</summary>
+          <p>
+            The build is not Apple-notarized.
+            Only if you trust the download, use the app-specific Open Anyway
+            option in System Settings → Privacy &amp; Security after attempting
+            to open it. Do not disable Gatekeeper system-wide.
+            If macOS reports malware or damage, stop and contact support.
+          </p>
+        </details>
+
+        <details>
+          <summary>Why is Android slow?</summary>
+          <p>
+            Try a lower display resolution, a lighter memory preset,
+            and one Android device at a time.
+            Close heavy apps and ensure there is enough free disk space.
+            Some Android apps are demanding or do not support emulators well.
+          </p>
+        </details>
+
+        <details>
+          <summary>Does OrbitDroid support every Mac?</summary>
+          <p>
+            No. Separate Apple silicon and Intel builds are available,
+            but macOS 13 or later and compatible virtualization are required.
+            Support across every Mac model has not been verified.
+          </p>
+        </details>
+
+        <details>
+          <summary>Does open source mean all Android apps will work?</summary>
+          <p>
+            No. App compatibility depends on the Android image, processor
+            architecture, graphics support, and the app’s own requirements.
+            Some games, DRM services, and anti-cheat systems reject emulators.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can I use Google Play?</summary>
+          <p>
+            Google Play availability depends on the installed Android
+            system image. Google services have their own terms and privacy
+            policies. The app does not guarantee Play certification.
+          </p>
+        </details>
+
+        <details>
+          <summary>How do I uninstall OrbitDroid?</summary>
+          <p>
+            Stop Android, quit OrbitDroid, and move OrbitDroid.app from
+            Applications to the Bin. This may leave virtual-device data
+            and downloaded runtime files on your Mac.
+            Back up anything important and consult the project’s instructions
+            before removing those files.
+          </p>
+        </details>
+
+        <details>
+          <summary>How do I report a problem?</summary>
+          <p>
+            Email Rahul or open a GitHub issue.
+            Include your Mac chip, macOS version, OrbitDroid version,
+            the exact error, and the steps that caused it.
+            Remove passwords, tokens, and personal information from logs
+            and screenshots.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="support">
+          <div class="eyebrow">Developed by Rahul Thakur</div>
+          <h2>Need help? Get in touch.</h2>
+
+          <p>
+            Questions, installation problems, ideas, or contributions?
+            Contact Rahul or open an issue on GitHub.
+          </p>
+
+          <div class="actions">
+            <a class="button"
+               href="mailto:rohan1ttg2001@gmail.com?subject=OrbitDroid%20support">
+              Email Rahul ↗
+            </a>
+
+            <a class="button secondary"
+               href="https://github.com/rohanttg2001/OrbitDroid/issues">
+              Open a GitHub issue ↗
+            </a>
+          </div>
+
+          <p class="small">rohan1ttg2001@gmail.com</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <strong>OrbitDroid</strong><br>
+        Developed by Rahul Thakur · © 2026<br>
+        Free to use · Open-source app code · No subscription
+      </div>
+
+      <div>
+        <a href="https://github.com/rohanttg2001/OrbitDroid">
+          GitHub repository ↗
+        </a><br>
+        See the repository license and third-party notices.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
