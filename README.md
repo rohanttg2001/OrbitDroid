@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <strong>One place for your Android apps and virtual devices.</strong><br>
+  <strong>One place for your Android apps and virtual devices full open source.</strong><br>
   Free essentials. Your own apps. A workspace on your Mac.
 </p>
 
