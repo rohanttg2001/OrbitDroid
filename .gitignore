@@ -1,0 +1,9 @@
+# Private owner material must never enter this public repository.
+issuer-*
+*.pem
+*.key
+issued/
+*Owner*Manager*
+OrbitDroid_Source.zip
+.env*
+.DS_Store

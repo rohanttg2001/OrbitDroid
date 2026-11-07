@@ -1,0 +1,31 @@
+OrbitDroid 0.4 — Application License
+Copyright (c) 2026 Rahul Thakur. All rights reserved.
+Contact: rohan1ttg2001@gmail.com
+
+This license applies to the new OrbitDroid 0.4 application and original changes.
+Free use: you may install and use the unmodified Free edition on Macs you control.
+Free features include one Android 11 device per Mac and individual APK installs.
+Pro: paid features require a valid, signed license issued for the licensed Mac.
+A Pro license unlocks the features listed in the app for its stated term; it does
+not transfer copyright or automatically grant access to the private source.
+Pricing, payment, source-code access and any additional commercial rights are
+agreed directly with Rahul Thakur by email before purchase. The app does not
+process payments. A key is provided after the owner confirms payment.
+
+Unless separately agreed in writing, you may not resell, sublicense, distribute
+the new proprietary source or keys, remove ownership notices, or bypass the
+license checks, except to the extent applicable law or a component's own license
+permits. Public release downloads are provided by the copyright holder; source
+code and the private key issuer are not included in the public repository.
+
+Existing rights in earlier OrbitDroid releases distributed under MIT remain
+unaffected. The prior notice is retained in licenses/OrbitDroid-0.3-MIT.txt.
+Third-party components retain their own permissions and requirements; nothing
+here restricts rights granted by their licenses. Electron/Chromium notices are
+bundled with the app. fast-xml-parser and its dependencies retain their licenses.
+Android tools and images are downloaded from Google under Google's agreements.
+
+The app is provided AS IS, without a warranty of fitness, uninterrupted service,
+universal device compatibility or any particular game frame rate. To the extent
+permitted by applicable law, the author is not liable for losses from its use.
+Statutory rights that cannot be excluded remain unaffected.

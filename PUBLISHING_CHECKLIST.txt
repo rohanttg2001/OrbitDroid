@@ -1,0 +1,10 @@
+FOR THE OWNER
+1. Create your public GitHub repository and upload only this kit's contents.
+2. Add the two customer app ZIPs to a new GitHub Release, using their filenames.
+3. Never upload the Owner License Manager, issuer-private.pem,
+   issuer-passphrase.txt, issued customer keys, or the full Source ZIP.
+4. Keep development source in a PRIVATE repository.
+5. Email requests go to rohan1ttg2001@gmail.com. Confirm payment, then issue keys
+   from your PRIVATE Owner License Manager.
+6. A public repository can be viewed/forked; no repository setting can make
+   a publicly published source file secret. Keep the source out of this repo.
